@@ -107,7 +107,7 @@ speed = -14
 FblockadeShortest = 5000
 blockadeShortest = 5000
 shortestFinal = 5000
-delayTime = 5
+delayTime = 24
 AIDuckingWait = 0
 nextObjectIndex = 0
 FblockadeIntroDist = 500
@@ -179,8 +179,8 @@ class Blockade:
 		self.position = self.position
 		return(self.position)
 		
-def MakeConnection(coord1, coord2, color, width):
-	Connections.append(pygame.draw.line(hud, color,coord1, coord2, width))
+#def MakeConnection(coord1, coord2, color, width):
+	#Connections.append(pygame.draw.line(hud, color,coord1, coord2, width))
 
 
 
@@ -190,18 +190,18 @@ def MakeConnection(coord1, coord2, color, width):
 
 
 # make initial variables...
-for i in range (8):
-	HiddenNode.append(pygame.image.load('network_node.bmp').convert())
-Coordinates.append((220,25))
-Coordinates.append((220,50))
-Coordinates.append((220,75))
-Coordinates.append((220,100))
-for i in range (0,4):
-	Coordinates.append((420, ((i * 25) + 25)))
-for i in range (4,8):
-	Coordinates.append((620, ((i - 4) * 25 + 25)))
-Coordinates.append((820,50))
-Coordinates.append((820,75))
+# for i in range (8):
+	# HiddenNode.append(pygame.image.load('network_node.bmp').convert())
+# Coordinates.append((220,25))
+# Coordinates.append((220,50))
+# Coordinates.append((220,75))
+# Coordinates.append((220,100))
+# for i in range (0,4):
+	# Coordinates.append((420, ((i * 25) + 25)))
+# for i in range (4,8):
+	# Coordinates.append((620, ((i - 4) * 25 + 25)))
+# Coordinates.append((820,50))
+# Coordinates.append((820,75))
 
 
 
@@ -214,64 +214,64 @@ Coordinates.append((820,75))
 # 1. Jump (680, 55)
 # 2. Duck (680, 60)
 
-DFNONode = pygame.image.load('network_node.bmp').convert()
-HONONode = pygame.image.load('network_node.bmp').convert()
-SpeedNode = pygame.image.load('network_node.bmp').convert()
-BiasNode = pygame.image.load('network_node.bmp').convert()
-JumpNode = pygame.image.load('network_node.bmp').convert()
-DuckNode = pygame.image.load('network_node.bmp').convert()
+# DFNONode = pygame.image.load('network_node.bmp').convert()
+# HONONode = pygame.image.load('network_node.bmp').convert()
+# SpeedNode = pygame.image.load('network_node.bmp').convert()
+# BiasNode = pygame.image.load('network_node.bmp').convert()
+# JumpNode = pygame.image.load('network_node.bmp').convert()
+# DuckNode = pygame.image.load('network_node.bmp').convert()
 
 
-TextDFNO = hudfont.render('Distance From Next Obstacle', True, black)
-TextHONO = hudfont.render('Height Of Obstacle', True, black)
-TextSpeed = hudfont.render('Speed', True, black)
-TextBias = hudfont.render('Bias', True, black)
-TextJump = hudfont.render('Jump', True, black)
-TextDuck = hudfont.render('Duck', True, black)
-
-
-
-MakeConnection(Coordinates[0], Coordinates[6], red, 3)
-MakeConnection(Coordinates[1], Coordinates[5], red, 2)
-MakeConnection(Coordinates[3], Coordinates[5], blue, 2)
-MakeConnection(Coordinates[1], Coordinates[6], blue, 2)
-MakeConnection(Coordinates[5], Coordinates[12], red, 2)
-MakeConnection(Coordinates[6], Coordinates[13], red, 3)
-MakeConnection(Coordinates[3], Coordinates[6], blue, 3)
+# TextDFNO = hudfont.render('Distance From Next Obstacle', True, black)
+# TextHONO = hudfont.render('Height Of Obstacle', True, black)
+# TextSpeed = hudfont.render('Speed', True, black)
+# TextBias = hudfont.render('Bias', True, black)
+# TextJump = hudfont.render('Jump', True, black)
+# TextDuck = hudfont.render('Duck', True, black)
 
 
 
-for i in range (0,4):
-	hud.blit(HiddenNode[i], (420, ((i * 25) + 22)))
-	HiddenNodex.append(420)
-	HiddenNodey.append((i * 25 + 25))
-for i in range (4,8):
-	hud.blit(HiddenNode[i], (620, ((i - 4) * 25 + 22)))
-	HiddenNodex.append(620)
-	HiddenNodey.append((i - 4) * 25 + 25)
+# MakeConnection(Coordinates[0], Coordinates[6], red, 3)
+# MakeConnection(Coordinates[1], Coordinates[5], red, 2)
+# MakeConnection(Coordinates[3], Coordinates[5], blue, 2)
+# MakeConnection(Coordinates[1], Coordinates[6], blue, 2)
+# MakeConnection(Coordinates[5], Coordinates[12], red, 2)
+# MakeConnection(Coordinates[6], Coordinates[13], red, 3)
+# MakeConnection(Coordinates[3], Coordinates[6], blue, 3)
+
+
+
+# for i in range (0,4):
+	# hud.blit(HiddenNode[i], (420, ((i * 25) + 22)))
+	# HiddenNodex.append(420)
+	# HiddenNodey.append((i * 25 + 25))
+# for i in range (4,8):
+	# hud.blit(HiddenNode[i], (620, ((i - 4) * 25 + 22)))
+	# HiddenNodex.append(620)
+	# HiddenNodey.append((i - 4) * 25 + 25)
 	
 # for i in range (0,7):
 	# ConnectionsEndx.append(HiddenNodex[i])
 	# ConnectionsEndy.append(HiddenNodey[i] + 2)
 	# MakeConnection(220, 25, HiddenNodex[i], HiddenNodey[i], blue, randint(1,4))
 
-for i in (Connections):
-		i
+# for i in (Connections):
+		# i
 
-hud.blit(TextDFNO, (25, 22))
-hud.blit(TextHONO, (25, 47))
-hud.blit(TextBias, (25, 72))
-hud.blit(TextSpeed, (25, 97))
-hud.blit(TextJump, (850, 47))
-hud.blit(TextDuck, (850, 72))
+# hud.blit(TextDFNO, (25, 22))
+# hud.blit(TextHONO, (25, 47))
+# hud.blit(TextBias, (25, 72))
+# hud.blit(TextSpeed, (25, 97))
+# hud.blit(TextJump, (850, 47))
+# hud.blit(TextDuck, (850, 72))
 
-updateScreen()
-hud.blit(DFNONode, (220, 22))
-hud.blit(HONONode, (220, 47))
-hud.blit(BiasNode, (220, 72))
-hud.blit(SpeedNode, (220, 97))
-hud.blit(JumpNode, (820, 47))
-hud.blit(DuckNode, (820, 72))
+# updateScreen()
+# hud.blit(DFNONode, (220, 22))
+# hud.blit(HONONode, (220, 47))
+# hud.blit(BiasNode, (220, 72))
+# hud.blit(SpeedNode, (220, 97))
+# hud.blit(JumpNode, (820, 47))
+# hud.blit(DuckNode, (820, 72))
 
 
 
